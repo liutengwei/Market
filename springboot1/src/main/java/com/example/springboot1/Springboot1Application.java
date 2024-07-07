@@ -9,6 +9,7 @@ public class Springboot1Application {
     public static void main(String[] args) {
         SpringApplication.run(Springboot1Application.class, args);
         System.out.println("fdfd");
+        System.out.println("13");
 
     }
 
