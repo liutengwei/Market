@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 style="color:red">功能正在加快开发中------</h1>
+        <h1 style="color:red">功能正在加快开发中----------</h1>
     </div>
 </template>
 <script>
