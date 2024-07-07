@@ -3,9 +3,7 @@ package com.example.springboot1.Controller;
 import com.example.springboot1.Controller.Utils.Result;
 import com.example.springboot1.Entity.User;
 import com.example.springboot1.Service.UserService;
-import com.example.springboot1.dto.ChangedPwdData;
-import com.example.springboot1.dto.ForgetPwdData;
-import com.example.springboot1.dto.NewPwdData;
+import com.example.springboot1.dto.ChangePwdData;
 import com.example.springboot1.dto.UserData;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +71,7 @@ public class UserController {
     }
 
     @RequestMapping("/changedPwd-control")
-    public Result changedPwdControl(@RequestBody ChangedPwdData changedPwd) {
+    public Result changedPwdControl(@RequestBody ChangePwdData changedPwd) {
         String username = (String) session.getAttribute("username");
         String oldPwd = changedPwd.getOldPwd();
         String newPwd = changedPwd.getNewPwd();
@@ -86,7 +84,7 @@ public class UserController {
     }
 
     @RequestMapping("/forgetPwd-control")
-    public Result forgetPwdControl(@RequestBody ForgetPwdData forgetPwdData) {
+    public Result forgetPwdControl(@RequestBody ChangePwdData forgetPwdData) {
         String username = forgetPwdData.getUsername();
         User user = userService.handleForgetPwd(username);
         if (user != null) {
@@ -97,9 +95,9 @@ public class UserController {
     }
 
     @RequestMapping("/newPassword-control")
-    public Result newPwdControl(@RequestBody NewPwdData newPwd) {
+    public Result newPwdControl(@RequestBody ChangePwdData newPwd) {
         String username=newPwd.getUsername();
-        String password=newPwd.getPassword();
+        String password=newPwd.getNewPwd();
         Boolean f = userService.handleNewPwd(username, password);
         if (f) {
             return new Result("success", null);
